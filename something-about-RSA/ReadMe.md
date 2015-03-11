@@ -44,11 +44,11 @@ Ubuntu 14.04 LTS 32bit
 [RSA_GenerateCipherTextTable.c](RSA_GenerateCipherTextTable.c) Choose a set of key,generate a cipher text table.Run it like this:
 
 	gcc -W RSA_GenerateCipherTextTable.c -o 1 -lgmp 
-    ./1 > cipherTextTable1
-	./1 > cipherTextTable2
+    ./1 > tableCipherText1
+	./1 > tableCipherText2
 
 
-[RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm.
+[RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm.Need a couple support files,tableCipherText1 and tableCipherText2.
 
 ![Effect diagram](img/2.png)
 
