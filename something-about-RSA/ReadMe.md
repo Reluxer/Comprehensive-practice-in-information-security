@@ -39,7 +39,7 @@ Ubuntu 14.04 LTS 32bit
 [RSA.c](RSA.c) Implementation of RSA algorithm.
 
 
-![Effect diagram](img/2015-03-11 22:40:55.png)
+![Effect diagram](img/1.png)
 
 [RSA_GenerateCipherTextTable.c](RSA_GenerateCipherTextTable.c) Choose a set of key,generate a cipher text table.Run it like this:
 
@@ -50,6 +50,6 @@ Ubuntu 14.04 LTS 32bit
 
 [RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm.
 
-![Effect diagram](img/2015-03-11 23:02:32.png)
+![Effect diagram](img/2.png)
 
 
