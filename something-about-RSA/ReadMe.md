@@ -16,23 +16,23 @@ Ubuntu 14.04 LTS 32bit
 
 - In order to work with no panic,you need to install g++, gcc, m4 firstly. Like this:
 
-    sudo apt-get install g++ gcc m4
+		sudo apt-get install g++ gcc m4
 
 - Then, get the [package of GMP]()
 - Do like this:
 
-	tar jxvf gmp-6.0.0a.tar.bz2
-    cd gmp-6.0.0
-	./configure
-    make
-	make check
-	make install
+    	tar jxvf gmp-6.0.0a.tar.bz2
+    	cd gmp-6.0.0
+		./configure
+    	make
+		make check
+		make install
 
 - OK, that is enough.
 - If you want to compile the source code file, do:
 
-	gcc -W example.c -o example -lgmp
-    ./example
+		gcc -W example.c -o example -lgmp
+    	./example
 
 ##Note for files
 
