@@ -18,7 +18,7 @@ Ubuntu 14.04 LTS 32bit
 
 		sudo apt-get install g++ gcc m4
 
-- Then, get the [package of GMP]()
+- Then, get the [package of GMP](GMP/gmp-6.0.0a.tar.bz2)
 - Do like this:
 
     	tar jxvf gmp-6.0.0a.tar.bz2
