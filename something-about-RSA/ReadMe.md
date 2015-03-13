@@ -34,20 +34,34 @@ Ubuntu 14.04 LTS 32bit
 		gcc -W example.c -o example -lgmp
     	./example
 
-##Note for files
+## Attack methods
 
-[RSA.c](RSA.c) Implementation of RSA algorithm.
+### 1
+
+Assume the message to be encrypted can be divided into two digital m1, m2. That is to say, message = m1 * m2.
+
+If the message can reache the maximum value of `2^length`, we can enumeration values from 1 to `2^(length/2)`.
+
+Include this files:
+
+- [RSA.c](RSA.c) Implementation of RSA algorithm.
 
 
 ![Effect diagram](img/1.png)
 
-[RSA_GenerateCipherTextTable.c](RSA_GenerateCipherTextTable.c) Choose a set of key, generate a couple cipher text table.Run it like this:
+- [RSA_GenerateCipherTextTable.c](RSA_GenerateCipherTextTable.c) Choose a set of key, generate a couple cipher text table.Run it like this:
 
 	gcc -W RSA_GenerateCipherTextTable.c -o 1 -lgmp 
     ./1 > tableCipherText1
 	./1 > tableCipherText2
 
 
-[RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm. Need a couple support files, tableCipherText1 and tableCipherText2.
+- [RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm. Need a couple support files, tableCipherText1 and tableCipherText2.
 
 ![Effect diagram](img/2.png)
+
+### 2
+Assume C~1~ = m^e^ mod n~1~, C~2~=m^e^ mod n~2~, ..., C~t~=m^e^ mod n~t~,
+
+
+
