@@ -18,7 +18,7 @@ Ubuntu 14.04 LTS 32bit
 
 		sudo apt-get install g++ gcc m4
 
-- Then, get the [package of GMP library](GMP/gmp-6.0.0a.tar.bz2)
+- Then, get the [package of GMP library](GMP/gmp-6.0.0a.tar.bz2). If you come into contact for the first time with this library, [here](GMP/GMP_Chinese_Introduction_3.pdf) is a Chinese Introduction book about it.You can download it and read.
 - Next step, install the GMP library, do like this:
 
     	tar jxvf gmp-6.0.0a.tar.bz2
@@ -56,12 +56,27 @@ Include this files:
 	./1 > tableCipherText2
 
 
-- [RSA_Attack.c](RSA_Attack.c) Achieve the attack of RSA algorithm. Need a couple support files, tableCipherText1 and tableCipherText2.
+- [RSA_Attack_01.c](RSA_Attack_01.c) Achieve the attack of RSA algorithm. Need a couple support files, tableCipherText1 and tableCipherText2.
 
 ![Effect diagram](img/2.png)
 
 ### 2
-Assume C~1~ = m^e^ mod n~1~, C~2~=m^e^ mod n~2~, ..., C~t~=m^e^ mod n~t~,
+Assume:
+	C<sub>1</sub> = m<sup>e</sup> mod n<sub>1</sub>,
+	C<sub>2</sub> = m<sup>e</sup> mod n<sub>2</sub>,
+	...,
+	C<sub>t</sub> = m<sup>e</sup> mod n<sub>t</sub>,
 
+And `t>e`.That we can get the value of m<sup>e</sup> mod(n<sub>1</sub>n<sub>2</sub>...n<sub>t</sub>) by Chinese remainder theorem.The details are as follows:
 
+m<sup>e</sup>≡∑N<sub>i</sub>N<sub>i</sub><sup>-1</sup>C<sub>i</sub> mod N(i:=1...t)  
+N=n<sub>1</sub>n<sub>2</sub>...n<sub>t</sub>  
+N<sub>i</sub>=N/n<sub>i</sub>  
+N<sub>i</sub>N<sub>i</sub><sup>-1</sup>≡1 mod n<sub>i</sub>
+
+Because of t>e&&m<n it equals m<sup>e</sup>, then we can get m easily.
+
+Include this files:
+
+[RSAFor02.c](RSAFor02.c) generate a set of C<sub>t</sub>, origin data is stored in file [result](result).
 
