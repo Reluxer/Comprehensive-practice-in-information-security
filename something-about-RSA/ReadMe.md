@@ -74,7 +74,7 @@ N=n<sub>1</sub>n<sub>2</sub>...n<sub>t</sub>
 N<sub>i</sub>=N/n<sub>i</sub>  
 N<sub>i</sub>N<sub>i</sub><sup>-1</sup>≡1 mod n<sub>i</sub>
 
-Because of t>e && m<n it equals m<sup>e</sup>, then we can get m easily.
+Because of `t>e && m<n` it equals m<sup>e</sup>, then we can get m easily.
 
 Include this files:
 
