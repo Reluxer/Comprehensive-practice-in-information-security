@@ -78,5 +78,10 @@ Because of t>e&&m<n it equals m<sup>e</sup>, then we can get m easily.
 
 Include this files:
 
-[RSAFor02.c](RSAFor02.c) generate a set of C<sub>t</sub>, origin data is stored in file [result](result).
+[RSAFor02.c](RSAFor02.c) generate a set of C<sub>t</sub>, By using redirection, origin data is stored in file [result](result).
 
+[table_C](table_C),[table_D](table_D),[table_N](table_N),[table_E](table_E),[table_M](table_M) Record the value of C,D, N, E,M
+
+[RSA_Attack_02.c](RSA_Attack_02.c) Details for attacking process.
+
+![Effect diagram](img/3.png)
