@@ -42,7 +42,7 @@ Assume the message to be encrypted can be divided into two digital m1, m2. That 
 
 If the message can reache the maximum value of `2^length`, we can enumeration values from 1 to `2^(length/2)`.
 
-Include this files:
+Include these files:
 
 - [RSA.c](RSA.c) Implementation of RSA algorithm.
 
@@ -76,7 +76,7 @@ N<sub>i</sub>N<sub>i</sub><sup>-1</sup>≡1 mod n<sub>i</sub>
 
 Because of `t>e && m<n`  m<sup>e</sup> mod(n<sub>1</sub>n<sub>2</sub>...n<sub>t</sub>) equals m<sup>e</sup>, then we can get m easily.
 
-Include this files:
+Include these files:
 
 [RSAFor02.c](RSAFor02.c) generate a set of C<sub>t</sub>, By using redirection, origin data is stored in file [result](result).
 
