@@ -61,6 +61,7 @@ Include these files:
 ![Effect diagram](img/2.png)
 
 ### 2
+
 Assume:
 	C<sub>1</sub> = m<sup>e</sup> mod n<sub>1</sub>,
 	C<sub>2</sub> = m<sup>e</sup> mod n<sub>2</sub>,
@@ -87,12 +88,17 @@ Include these files:
 ![Effect diagram](img/3.png)
 
 
+### 3 Common mode attack
 
+Assume that there are 2 users use the same modulus n, but they use different E and D, the attacker send the same message to them.That is:
+c<sub>1</sub>=m<sup>e<sub>1</sub></sup> mod n, c<sub>2</sub>=m<sup>e<sub>2</sub></sup> mod n.
 
+Target: get m;
 
-### 3
+gcd(e<sub>1</sub>,e<sub>2</sub>)=1  
+a\*e<sub>1</sub>+b\*e<sub>2</sub>=1  
+c<sub>1</sub><sup>a</sup>\*c<sub>2</sub><sup>b</sup>=m mod n
 
-To be continuesd...
 
 Include these files:
 
@@ -100,4 +106,13 @@ Include these files:
 
 ![Effect diagram](img/4.png)
 
+### 4 Wiener's attack
 
+[Full details is here.](http://en.wikipedia.org/wiki/Wiener%27s_attack)
+
+
+Include these files:
+
+- [RSA_Attack_04.c](RSA_Attack_04.c) Details for attacking process.
+
+![Effect diagram](img/5.png)
