@@ -1,0 +1,1131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='zh-CN' xml:lang='zh-CN' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?t=1423294220000" />
+  <title>go_spider首页、文档和下载 - Go爬虫框架 - 开源中国社区</title>
+  <meta name="Keywords" content="go_spider,go_spider是什么,go_spider下载,go_spider论坛,go_spider汉化,,网络爬虫,Google Go,跨平台"/>  <meta name="Description" content="  本项目基于golang开发，是一个开放的垂直领域的爬虫框架，框架中将各个功能模块区分开，方便使用者重新实现子模块，进而构建自己垂直方方向的爬虫。 本项目将爬虫的各个功能流程区分成Spider模块（主控），Downloader模块（下载器），PageProcesser模块（页面分析），Scheduler模块（任务队列），Pipeline模块（结果输..."/>    <link rel="stylesheet" href="/css/channel.css?t=1427810261000" type="text/css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="/js/2011/fancybox/jquery.fancybox-1.3.4.css?t=1399607777000" media="screen" />
+  <link rel="alternate" type="application/rss+xml" title="最新开源项目" href="http://www.oschina.net/project/rss" />
+  <link rel="alternate" type="application/rss+xml" title="最新开源资讯" href="http://www.oschina.net/news/rss" />
+  <link rel="alternate" type="application/rss+xml" title="最新问题列表" href="http://www.oschina.net/question/rss" />
+  <link rel="alternate" type="application/rss+xml" title="最新翻译列表" href="http://www.oschina.net/translate/rss" />
+  <link rel="alternate" type="application/rss+xml" title="最新博客列表" href="http://www.oschina.net/blog/rss" />
+  <link rel="alternate" type="application/rss+xml" title="最新代码分享列表" href="http://www.oschina.net/code/rss" />
+  <link rel="alternate" type="application/rss+xml" title="开源中国 - 源码列表" href="http://www.oschina.net/code/source_rss" />
+    <!--添加emoji支持-->
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/nature.css?t=1429214431000">
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/object.css?t=1429214431000">
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/people.css?t=1429214431000">
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/place.css?t=1429214431000">
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/Sysmbols.css?t=1429214431000">
+    <link rel="stylesheet" type="text/css" href="/js/team/grunt/dist/emoji/twemoji.css?t=1429214431000">
+
+  <script type="text/javascript" src="/js/2012/jquery-1.7.1.min.js?t=1399607778000"></script>
+  <script type="text/javascript" src="/js/2012/jquery.form.js?t=1399607778000"></script>
+  <script type="text/javascript" src="/js/2011/fancybox/jquery.fancybox-fixed.js?t=1399607777000?2014031702"></script>
+    <link rel="stylesheet" href="/js/poshytip/tip-yellowsimple/tip-yellowsimple.css?t=1399607776000" type="text/css" />
+  <script type="text/javascript" src="/js/poshytip/jquery.poshytip.min.js?t=1399607776000"></script>
+  <script type="text/javascript">
+  	g_user = {
+	id:0,
+	name:'',
+	login:false};  </script>
+    <script type="text/javascript" src="/js/2011/oschina.js?t=1399607777000"></script>
+  <script type="text/javascript" src="/js/utils.js?t=1399607775000"></script>
+  <script type="text/javascript" src="/js/channel.js?t=1428620246000?2014022501"></script>
+  <link rel="alternate" type="application/rss+xml" title="开源中国 - 最新开源项目" href="http://www.oschina.net/project/rss" />
+  </head>
+<body>
+<div id='OSC_NavTop'>
+	<div class="wp998">
+        <div id="OSC_Channels">
+        	<ul>
+        	<li class="item"><a href="http://www.oschina.net/" class='home'>首页</a></li>        	<li class="item control_select"><a href="http://www.oschina.net/project" class='project'>开源项目</a>
+				<ul class="cs_content">
+                	                	<li><a href="http://www.oschina.net/project/lang/19/java">Java 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/194/csharp">C# 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/22/php">PHP 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/21/c">C/C++ 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/26/ruby">Ruby 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/25/python">Python 开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/358/go">Go开源软件</a></li>
+                	<li><a href="http://www.oschina.net/project/lang/28/javascript">JS开源软件</a></li>
+				</ul>
+			</li>
+        	<li class="item control_select">
+				<a href="http://www.oschina.net/question" class='question'>问答</a>
+				<ul class="cs_content">
+                	<li><a href="http://www.oschina.net/question?catalog=1"> 技术问答 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=2"> 技术分享 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=3"> IT大杂烩 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=100"> 职业生涯 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/question?catalog=4"> 站务/建议 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/alipay"> 支付宝专区 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/mopaas"> MoPaaS专区 &raquo; </a></li>
+                	<li><a href="http://www.oschina.net/hardware"> 开源硬件专区 &raquo; </a></li>
+				</ul>
+			</li>
+        	<li class="item"><a href="http://www.oschina.net/code/list" class='code'>代码</a></li>
+        	        	<li class="item"><a href="http://www.oschina.net/blog" class='blog'>博客</a></li>
+        	<li class="item"><a href="http://www.oschina.net/translate" class='tran'>翻译</a></li>
+            <li class="item"><a href="http://www.oschina.net/news" class='news'>资讯</a></li>
+        	<li class="item control_select">
+				<a href="http://www.oschina.net/android" class='mobile'>移动开发</a>
+				<ul class="cs_content cs_mobile">
+                	<li class="android_"><a href="http://www.oschina.net/android">Android开发专区</a></li>
+                	<li class="ios_"><a href="http://www.oschina.net/ios/home">iOS开发专区</a></li>
+                	<li class="ios_"><a href="http://www.oschina.net/ios/codingList">iOS代码库</a></li>
+                	<li class="wp7_"><a href="http://www.oschina.net/wp">Windows Phone</a></li>
+				</ul>
+			</li>
+        	<li class="item t_job"><a href="http://www.oschina.net/job" class='job'>招聘</a></li>
+									            <li class="item control_select">
+                <a href="http://city.oschina.net/" id="MyCities" title="城市圈">城市圈</a>
+							</li>
+        	</ul>
+        </div>
+		<div id="OSC_Userbar">
+                		    		当前访客身份：游客 [ <a href="http://www.oschina.net/home/login?goto_page=http%3A%2F%2Fwww.oschina.net%2Fp%2Fgo_spider">登录</a> | <a href="http://www.oschina.net/home/reg">加入开源中国</a> ]
+    				</div>
+		<div class='clear'></div>
+	</div>
+
+</div>
+<div id='OSC_Banner'><div class="wp998"><a href='http://www.oschina.net/' class='Logo' title='OSChina 开源中国'>开源中国</a>
+<h1><a href='/project'>开源项目</a></h1>
+<dl>
+	<dt>当前位置：<a href='http://www.oschina.net/home/go?page=admin%2Fnew-project'>添加开源项目&raquo;</a></dt>
+	<dt>
+    	<a href="/project/tags">项目分类</a>&nbsp;&raquo;
+    	<a href="/project/tag/64/spider">网络爬虫</a>&nbsp;&raquo;    	go_spider
+	</dt>
+</dl>
+<form action='http://www.oschina.net/search' class='search'>
+	<input type='hidden' name='scope' value='project'/>
+	<input id='channel_q' type='text' name='q' value='' placeholder='在 35825 款开源项目中搜索' class='TXT'/>
+    <button type='submit' class='BTN'>搜 索</button>
+</form>
+<div class='clear'></div></div></div>
+<div id="OSC_Screen">
+	<div id="OSC_Content" class='CenterDiv'>
+
+
+
+  
+<style>
+#SoftwareChannel {overflow:hidden;}
+.SoftwareBody {float:left;width:730px;}
+.SoftwareRight {float:right; width:250px;}
+
+
+#ZH_Header {margin:0 0 20px 0; height: 148px; background: url(/img/ZH_Header_bg.jpg) no-repeat; }
+#ZH_Header h1 {float: left; width: 400px; margin-left: 50px; display: inline;  font-size:36pt; color: #bc2f17; line-height: 130px;}
+#ZH_Header h2 { font-size: 18pt;}
+#ZH_Header h2 em {font-size: 30pt; color:#40aa53;}
+#ZH_Header p {float: right; margin-right: 55px; margin-top: 5px; width: 480px;}
+#ZH_Header p a{ padding: 0 30px 0 10px; display: inline-block; background: #557dba url(/img/ZH_tijiao.gif) 133px 7px no-repeat; line-height: 30px; font-size: 11pt; color: #fff; text-decoration: none; }
+
+#ZH_Tags {}
+
+.ZH_Tabs {background-color:#eee;height:28px;margin-bottom:10px;}
+.ZH_Tabs ul{float:left;height:28px;line-height:28px;}
+.ZH_Tabs li{float:left;font-size:10.5pt;}
+.ZH_Tabs li a{color:#000;display:block;text-decoration:None;padding:0 15px;}
+.ZH_Tabs li a.active {background-color:#557DBA;color:#fff;}
+.ZH_Tabs li a.sep{border-right:1px solid #ccc;}
+.ZH_Tabs .desc {color:#999;float:left; margin:8px 0 0 20px;}
+.ZH_Tabs .more{float:right;margin:6px 6px 0 0;text-decoration:None;}
+
+
+
+.TopZHProjects {margin:20px 2px;background:#fafcff;}
+.TopZHProjects ul li {float:left; width:48%; height:60px;padding-left:10px;margin:0 0 10px 0;}
+.TopZHProjects ul li span img {widht:48px;height:48px;}
+.TopZHProjects ul li h3 {font-size:10.5pt;}
+.TopZHProjects ul li h3 a {text-decoration:none;}
+.TopZHProjects ul li p {color:#666;font-size:9pt;margin:3px 0 0 5px; line-height: 16px;}
+
+.TopZHProjects ul li span {float: left; width: 52px; margin-right: 8px; display: inline; }
+.TopZHProjects ul li span img{ border: 1px #eee solid;}
+
+#ZH_ProjectList {margin:20px 0 0 0;}
+#ZH_ProjectList h2 {margin:0 0 30px 0;background:#557DBA;color:#fff;padding:5px;}
+
+#ZH_Tags, .ZH_top_users {margin:0px 0 0 30px;}
+#ZH_Tags strong, .ZH_top_users strong {display:block; font-size:12pt; margin:0 0 20px 0;}
+#ZH_Tags ul {line-height:22px;font-size:9pt;color:#666;margin:0 0 0 10px;}
+#ZH_Tags ul li a {font-size:12pt;text-decoration:none;margin-right:5px;}
+
+.RightProjectList ul {margin:5px;}
+.RightProjectList ul li {overflow:hidden;margin-bottom:10px;}
+.RightProjectList ul li span.date {color:#999;font-size:8pt;float:right;-webkit-text-size-adjust:none;}
+.RightProjectList ul li a {font-weight:bold;display:block;margin:0 0 5px 0;}
+.RightProjectList ul li p {color:#666;}
+
+/* 项目详细列表 */
+.ProjectList {background:#fff;}
+.ProjectList ul.List {margin:20px 5px;}
+.ProjectList ul.List li {margin:10px 0 20px 0;border-bottom:1px dashed #ddd;}
+.ProjectList ul.List li h3 {font-size:14pt;text-decoration:none;background:url('/img/r_arrow.gif') no-repeat left center;padding-left:16px;}
+.ProjectList ul.List li h3 em {font-style:normal;color:#060;}
+.ProjectList ul.List li h3 a { text-decoration:none;}
+.ProjectList ul.List li a .name {color:#060;display:inline;margin:0;}
+.ProjectList ul.List li a.projectImg {display:block;margin:10px 0;}
+.ProjectList ul.List li a.projectImg img {max-width:500px;}
+.ProjectList ul.List li a.more {font-weight:normal;color:#A00;display:block;margin:10px 0 0 0;}
+.ProjectList ul.List li a:hover {color:#FF3300;text-decoration:underline;}
+.ProjectList ul.List li p.detail {margin:5px 0 5px 15px;color:#666;font-size:9pt;line-height:20px;}
+.ProjectList ul.List li p.news {margin:10px 0 5px 0;}
+.ProjectList ul.List li p.news a {color:#333;}
+
+
+/* /project/tags */
+.CATALOGS {border:1px solid #ccc;background:#fff;}
+.CATALOGS h2 {background:#cfc;font-size:10pt;padding:3px 5px;color:#666;height:24px;}
+.CATALOGS .TOP_TAG {margin:10px 10px 20px 10px;}
+.CATALOGS .TOP_TAG h3 {border-bottom:2px solid #ccc;font-size:10.5pt;padding:0 0 3px 0;margin-bottom:10px;}
+.CATALOGS .TOP_TAG ul {line-height:26px;overflow:hidden;}
+.CATALOGS .TOP_TAG ul li {float:left;width:176px;height:24px;overflow:hidden;font-size:10pt;}
+.CATALOGS .TOP_TAG ul li a {text-decoration:None;}
+.CATALOGS .TOP_TAG ul li em {font-style:normal;font-size:8pt;color:#666;-webkit-text-size-adjust:none;}
+.CATALOGS .LANGS ul li {width:100px;}
+.CATALOGS .TOP_TAG .TAG_LINKS {margin:0 0 10px 0;}
+.CATALOGS .TOP_TAG .TAG_LINKS a {color:#A00;font-weight:bold;margin-right:20px;}
+
+.TAGS .TAG {border:1px solid #40AA53;margin-bottom:10px;}
+.TAGS .TAG h3 {
+	color:#060;
+	font-size:11pt;
+	background:#DDFFDD url('/img/all.gif') no-repeat 5px center;
+	padding:3px 5px 3px 20px;
+}
+.TAGS .TAG h3 .more {float:right;font-weight:normal;font-size:9pt;}
+.TAGS .TAG ul {
+	font-size:9.5pt;
+	padding:5px 0;
+}
+.TAGS .TAG ul li {
+	background:url('/img/a2.gif') no-repeat 5px center;
+	padding-left:18px;
+}
+.TAGS .TAG ul li a {color:#060;text-decoration:none;}
+.TAGS .TAG ul li a:hover {text-decoration:underline;color:#A00;}
+.TAGS .TAG ul li em {color:#666;font-size:9pt;font-style:normal;margin-left:5px;}
+.TAGS .TAG ul li.current {background-color:#fee;}
+.TAGS .TAG ul li.current a {color:#A00;font-weight:bold;}
+
+.TagLinks {margin:10px 0 20px 0;line-height:22px;border:1px dashed #ccc;background:#ffc;padding:3px 5px}
+.TagLinks a {font-weight:bold;color:#A00;margin:0 13px 0 3px;}
+
+/* 软件列表页 */
+.AllProjectList {overflow:hidden;}
+.AllProjectList .TagTree {float:left; width:235px;overflow-y:auto;overflow-x:hidden;}
+
+.AllProjectList .ProjectList {float:right; width:740px;padding:10px 5px;border:1px solid #ddd;}
+
+.AllProjectList .ProjectList h2 {overflow:hidden;margin:0 5px;font-size:18pt;font-weight:normal;color:#333;}
+.AllProjectList .ProjectList h2 em {font-style:normal;color:#A00;margin:0 2px 0 3px;}
+.AllProjectList .ProjectList h2 .stat {float:right;font-size:12pt;margin:5px 0 0 0;}
+.AllProjectList .ProjectList h2 .stat .selected {color:#A00;}
+.AllProjectList .ProjectList .PrefixFiler {font-size:10.5pt;margin:0 5px;}
+.AllProjectList .ProjectList .PrefixFiler a {margin-right:4px;text-decoration:none;}
+.AllProjectList .ProjectList .PrefixFiler a.current {font-weight:bold; color:#A00;}
+.AllProjectList .ProjectList .FilterForm {margin-left:5px;display:block;}
+.AllProjectList .ProjectList .FilterForm a.selected {font-weight:bold; color:#A00;}
+
+.TagTree {border:1px solid #ddd;background:#fff;}
+.TagTree a {text-decoration:none;}
+.TagTree h2 {background:#eee;color:#060;font-weight:normal;padding:5px 10px;font-size:12pt;}
+.TagTree .TopTag {margin:10px;}
+.TagTree .TopTag h3 {font-size:12pt;}
+.TagTree .TopTag h3 a {
+	display:block;
+	padding:0 10px 0 0;
+}
+.fixed{position:fixed;top:10px;}
+.AllProjectList .TagTree
+.TagTree h3 a {background: url('/img/down.gif') no-repeat right center;}
+.TagTree .opened h3 a {background: url('/img/up2.gif') no-repeat right center;}
+.TagTree .closed ul {display:none;}
+
+.TagTree .TopTag ul {margin:10px 0 20px 10px;font-size:10pt;}
+.TagTree .TopTag ul li {overflow:hidden;margin:0 0 5px 0;}
+.TagTree .TopTag ul li a {display:block;}
+.TagTree .TopTag ul li a:hover {color:#40AA53;}
+.TagTree .TopTag ul li em {
+	float:right;
+	font-style:normal;
+	color:#666;	
+    background: #f2f2f2;
+	padding:1px 2px;
+    font-size: 9pt;
+    font-style: normal;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+.TagTree .TopTag ul li a.current {color:#40AA53;font-weight:bold;}
+.TagTree .TopTag ul li a.current em {background:#40AA53;color:#fff;}
+.TagTree .TopTag ul li a:hover em {background:#40AA53;color:#fff;}
+
+
+.SoftwareBody .RecommendList {margin:0 0 10px 0;background:#fafcff;}
+.SoftwareBody .HotList {margin:0 0 20px 0;background:#fafcff;}
+
+.SoftwareBody .RecommendList ul {overflow:hidden;font-size:10.5pt;margin:10px;line-height:28px;}		
+.SoftwareBody .RecommendList ul li {float:left; width: 350px;}
+.SoftwareBody .RecommendList ul li a {background:url('/img/a3.gif') no-repeat left center; padding-left:16px;text-decoration:none;}
+.SoftwareBody .RecommendList ul li a em {font-style:normal;color:#336;}
+.SoftwareBody .RecommendList ul li a:hover em {color:#C00;}
+
+.SoftwareBody .HotList ul {overflow:hidden;margin:10px;font-size:10.5pt;}
+.SoftwareBody .HotList ul li {float:left;width:350px;height:36px;overflow:hidden;}
+.SoftwareBody .HotList ul li img {float:left;width:32px;height:32px;}
+.SoftwareBody .HotList ul li span {float:left; margin:3px 0 0 10px;}
+.SoftwareBody .HotList ul li a em {font-style:normal;color:#336;}
+.SoftwareBody .HotList ul li a:hover em {color:#C00;}
+
+.RightNewsList .List li {overflow:hidden;background:url('/img/a2.gif') no-repeat left center;padding-left:16px;overflow:hidden;line-height:24px;}
+.RightNewsList .List h3 {font-size:10.5pt; float:left; font-weight:normal;}
+.RightNewsList .List .date {float:right;color:#666;}
+.RightNewsList .List li em {font-style:normal;color:#A00;margin:0 2px;} 
+
+
+.ProjectPage {overflow:hidden;}
+.ProjectPage .ProjectMain {float:left; width:732px;}
+.ProjectPage .ProjectRight {float:right; width:258px;}
+
+.ProjectPage .Project {border:1px solid #ddd; background:#fff;}
+.ProjectPage .Recommend {
+	background:#fff url('/img/recomm.gif') no-repeat 640px 5px;
+}
+.ProjectPage .Project h1.PN {overflow:hidden;margin:15px 0 10px 10px;font-size:16pt;}
+.ProjectPage .Project h1.PN img {float:left; height:48px;}
+.ProjectPage .Project h1.PN .name {float:left; margin-left:10px;}
+.ProjectPage .Project h1.PN .name a.h1 {text-decoration:none;color:#000; line-height:44px;}
+.ProjectPage .Project h1.PN .name i {font-weight:normal;font-style:normal;font-size:8pt;display:block;color:#888;}
+.ProjectPage .Project h1.PN a.edit {float:left; font-weight:normal; font-size:9pt;margin-left:10px;border:1px solid #eee; padding:3px 5px;text-decoration:none;}
+.ProjectPage .Project h1.PN a.edit:hover {background:#ffe}
+.ProjectPage .Project .Body img {max-width:700px;}
+.ProjectPage .Project .Body .detail {margin:10px;overflow:hidden;font-size:10pt;}
+.ProjectPage .Project .Body .detail p {margin-bottom:10px;}
+
+.ProjectPage .Project .ProjectEdit {overflow:hidden;border-top:1px dashed #ccc;margin:10px 0;}
+.ProjectPage .Project .ProjectEdit a {float:right;padding:2px 5px;background:#40AA53;color:#fff;text-decoration:none;margin:5px 10px 0 0;}
+.ProjectPage .Project .GithubEmbed {margin:0 10px;}
+.ProjectPage .Project .ProjectNews {margin:10px;}
+.ProjectPage .Project .ProjectNews strong {font-size:10.5pt;}
+.ProjectPage .Project .ProjectNews strong em {font-style:normal;color:#A00;margin:0 5px 0 2px;}
+
+.ProjectPage .Project .ProjectNews ul {margin:10px 0;line-height:20px;font-size:10pt;}
+.ProjectPage .Project .ProjectNews ul li {border-bottom:1px dashed #ccc;overflow:hidden;background:url('/img/a3.gif') no-repeat left center;padding-left:16px;}
+.ProjectPage .Project .ProjectNews ul li a {text-decoration:none;float:left; width:440px;}
+.ProjectPage .Project .ProjectNews ul li .stat {float:left;font-size:9pt;color:#666;width:120px;}
+.ProjectPage .Project .ProjectNews ul li .date {float:right;color:#666;font-size:9pt; width:120px; text-align:right;}
+.ProjectPage .Project .google_ads {margin-left:1px;}
+.ProjectPage .Project .attrs {
+	background:#f6f6f6;
+	border:1px solid #eee;
+	padding:5px 10px;
+	margin:0 10px;
+	font-weight:bold;
+	line-height:22px;
+}
+.ProjectPage .Project .attrs a {font-weight: normal;}
+.ProjectPage .Project .urls {margin:20px 10px;height: 30px;}
+.ProjectPage .Project .urls li {float: left;width:120px;margin-right:20px;}
+.ProjectPage .Project .urls a {
+	background:#557DBA;
+	color:#fff;
+	float:left;
+	width:120px;
+	height:30px;
+	line-height:28px;
+	font-size:12pt;
+	text-decoration:none;
+	text-align:center;
+}
+.ProjectPage .Project .urls a:hover {background:#3F669C;}
+
+
+.ProjectPosts {margin:20px 0;}
+.ProjectThreads {margin:0 10px 20px 10px;}
+.ProjectThreads table {width:100%;}
+.ProjectThreads table td {vertical-align:top;padding:10px 0 5px 0;border-bottom:1px dashed #ccc;}
+.ProjectThreads h4 {font-size:10.5pt;}
+.ProjectThreads h4 a {text-decoration:none;}
+.ProjectThreads h4 a:hover {text-decoration:underline;}
+.ProjectThreads h4 a .highlight {color:#A00;}
+.ProjectThreads h4 .stat {color:#666;font-size:9pt;margin-left:10px;font-weight:normal;float:right;}
+.ProjectThreads h4 em {color:#A00;font-style:normal;margin:0 3px 0 1px;}
+
+.ProjectThreads .portrait {width:45px;vertical-align:top;}
+.ProjectThreads .portrait img {width:32px;height:32px;border:1px solid #eee;padding:2px;background:#fff;}
+.ProjectThreads .portrait a:hover img {border:1px solid #40AA53;}
+
+.ProjectThreads .Tags {margin:5px 0;}
+
+.ProjectThreads #PopularTags {border-bottom:1px solid #fff;padding:0 0 10px 0;}
+.ProjectThreads #PopularTags th {width:20px;padding:0 0 0 2px;background:#40AA53;color:#fff;align:center;}
+.ProjectThreads #PopularTags td {padding:2px 5px;border:1px solid #40AA53;border-left:0;background:#ffc;}
+.ProjectThreads #PopularTags a {background:#eee;border-bottom:1px solid #999;}
+.ProjectThreads #PopularTags a:hover {color:#40AA53;}
+.ProjectThreads #PopularTags a:hover em {color:#40AA53;}
+
+.ProjectThreads .topic p {font-size:9pt;color:#666;}
+
+.ProjectThreads .qstat {width:140px;text-align:right;}
+.ProjectThreads .qstat a {text-decoration:none;}
+.ProjectThreads .qstat ul li {
+	float:left;
+	font-size:9pt;
+	text-align:center;
+	margin-left:3px;
+	width:42px;
+	padding:0 0 3px 0;
+}
+.ProjectThreads .qstat ul li.answer {background:#628d5a;color:#fff;}
+.ProjectThreads .qstat ul li.answer0 {color:#A00;}
+.ProjectThreads .qstat ul li.HasBestAnswer {color:#ff6;}
+.ProjectThreads .qstat ul li.vote {color:#000;}
+.ProjectThreads .qstat ul li.view {color:#666;}
+.ProjectThreads .qstat ul li em {
+	display:block;
+	padding:3px 0;
+	font-style:normal;
+	font-family:Verdana ;
+	font-weight:bold;
+	font-size:12pt;
+}
+
+.ProjectThreads a.more {float:right;margin-top:10px;color:#A00;}
+
+.ProjectObjects {margin: 20px 0;}
+.ProjectObjects ul.List {margin:10px;}
+.ProjectObjects ul.List li h3 {margin-top:20px;}
+.ProjectObjects ul.List li .outline {margin:5px 0 10px 0;font-size:9pt;color:#666;}
+.ProjectObjects ul.List li .detail {font-size:9pt;color:#666;line-height:22px;margin:5px 0 10px 0;}
+.ProjectObjects ul.List li .detail a {margin-top:10px;}
+
+.ProjectPage .ProjectRight .RightProjectList {margin-top:20px;}
+
+.ProjectPage .ProjectRight #QuestionWizard {
+	font-size:12pt;
+	text-align:center;
+	padding:8px 10px;
+	border:1px solid #ccc;
+	margin:0px 0 10px 0;
+	color:#666;
+	background:#fff;
+	overflow:hidden;
+}
+.ProjectPage .ProjectRight #QuestionWizard em {font-style:normal;color:#A00;font-weight:bold;}
+.ProjectPage .ProjectRight #QuestionWizard a {text-decoration:none;}
+.ProjectPage .ProjectRight #QuestionWizard a.rndbutton {margin:10px 10px 0 0 ;font-weight:normal;font-size:10.5pt;}
+.ProjectPage .ProjectRight #QuestionWizard img {width:50px;height:50px;}
+.ProjectPage .ProjectRight #QuestionWizard .FollowIt {margin:8px 0 0 0;font-size:10.5pt;}
+.ProjectPage .ProjectRight #QuestionWizard .FollowIt span {margin:0;padding:0;float:left;}
+
+
+.ProjectEditor {width:100%;margin-bottom:20px;}
+.ProjectEditor .notes {border:1px solid #ccc;background:#ffc;padding:10px;margin-bottom:10px;}
+.ProjectEditor .notes h3 {font-size:10.5pt;margin:5px 0 10px 0;}
+.ProjectEditor .notes ul {margin:0 20px;color:#006;list-style:disc;}
+.ProjectEditor td,.ProjectEditor th {padding:5px;}
+.ProjectEditor .tags label {margin-right:5px;}
+.ProjectEditor .tags label.SELECTED {color:#C00;}
+
+
+#DynaInfo {margin:0 0 10px 0;}
+#DynaInfo form {
+	margin:0 0 10px 0;
+	overflow:hidden;
+	position:relative;
+	border:1px solid #40AA53;
+	background:#40AA53;
+}
+#DynaInfo textarea {float:left;width:211px;height:36px;padding:2px;resize:none;overflow:auto;font-size:9pt;border:0;}
+#DynaInfo textarea:focus {border:0;}
+#DynaInfo input {float:left;width:37px;height:36px;background:#40AA53;color:#fff;border:0;}
+#DynaInfo input:hover {color:#ff0;cursor:pointer;}
+#DynaInfo #DivPubStatus {text-align:center;position:absolute;top:10px;left:80px;font-size:12pt;color:#060;display:none;}
+#DynaInfo ul.TopTweets li {margin:0 0 5px 0;padding:0 0 8px 0;border-bottom:1px dashed #ddd;}
+#DynaInfo ul.TopTweets li .portrait {float:left;width:35px;padding-top:3px;}		
+#DynaInfo ul.TopTweets li .portrait img {width:24px;height:24px;border:1px solid #ccc;padding:1px;background:#fff;}		
+#DynaInfo ul.TopTweets li .body {float:left;width:220px;overflow:hidden;font-size:9pt;}	
+#DynaInfo ul.TopTweets li .user a {color:#6cabe1;}
+#DynaInfo ul.TopTweets li .log {color:#666;word-break: break-all;}
+#DynaInfo ul.TopTweets li .log a {color:#6cabe1;word-break: break-all;}
+#DynaInfo ul.TopTweets li .log img {vertical-align:middle;}
+#DynaInfo ul.TopTweets li .time {display:block;color:#9A9A9A;margin:5px 0 0 0;}
+#DynaInfo ul.TopTweets li .time a {color:#9A9A9A;text-decoration:none;}
+#DynaInfo ul.TopTweets li .time a:hover {color:#6cabe1;}	
+#DynaInfo .pager li a {font-size:9pt;}
+
+.TopUsers ul li {float:left; width:54px; height:50px; overflow:hidden;text-align:center;margin:0 5px 10px 5px;}
+.TopUsers ul li img {width:32px;height:32px;}
+.TopUsers ul li a.name {display:block;font-size:9pt;}
+
+.ad_banner{
+	margin-bottom: 10px;
+}
+</style>
+
+
+<div class="ProjectPage">
+<div class="ProjectMain">
+	<div class="Project">
+	<h1 class='PN'>
+				<img src="/img/logo/default.gif?t=1399607809000"/>
+				<p class='name'>
+			<a href="/p/go_spider" class='h1'>Go爬虫框架 <u>go_spider</u></a>
+								</p>
+		<a href="/p/go_spider/edit" class='edit'>编辑/纠错</a>
+	</h1>
+	
+	<style type="text/css">
+#TagsSwitcher{color:#A00;}
+#RecTags,#MyTags{margin:5px 0;}
+#RecTags a.tag{line-height:24px;}
+#favor_form{width:200px;}
+#favor_form p:first-child{margin:5px 0;}
+#favor_form p {color:#666;}
+#favor_form form{min-height:85px;width:200px;}
+#favor_form form ._favor_input{display:block;margin:2px 0;width:199px;}
+#favor_form form ._favor_button{float:left;padding:2px 5px;}
+.favor_ok {text-align:center;font-size:10.5pt;width:199px;height:60px;margin-top:10px;}
+#TagsSwitcher{cursor:pointer;float:right;margin-top:10px;}
+#MyTags{display:none;width:199px;}
+#MyTags a.tag {float:left; background-color: #E0EAF1;border-bottom: 1px solid #3E6D8E;border-right: 1px solid #7F9FB6;color: #3E6D8E;font-size: 8pt;line-height: 16px;margin: 2px 2px 2px 0;padding: 2px 4px;text-decoration: none;white-space: nowrap;}
+#MyTags a.tag:hover{background-color: #3E6D8E;color: #FFF;}
+#toolbar_wrapper{padding:10px 0 5px 0;}
+.toolbar{height:33px;margin:0;padding:0;vertical-align: middle;border:1px solid #CCC;-moz-box-shadow: 0 1px 3px rgba(198,198,198,0.5);-webkit-box-shadow: 0 1px 3px rgba(198,198,198,0.5);box-shadow: 0 1px 3px rgba(198,198,198,0.5);}
+.toolbar a{text-decoration:none;color:black;}
+.share{float:left;margin:0;padding:3px 0 0 0;line-height:25px;width:280px;}
+.share_sina{float:left;background:url(/img/toolbar.gif) -1px -278px no-repeat;padding-left:25px;padding-right:5px;margin-left:3px;}
+.share_qq{float:left;background:url(/img/toolbar.gif) -1px -316px no-repeat;padding-left:25px;padding-right:5px;}
+#share_weixin {float:left;background:url('/img/weixin.gif') 5px 4px no-repeat;padding-left:25px; cursor:pointer;}
+.options{float:right;margin:3px 5px 0 5px;padding:0;height:30px;line-height:25px;}
+.tool_title {float:left;text-align:center;vertical-align:middle;margin:0 0 0 5px;line-height:33px;}
+.options .tool_title{line-height:30px;}
+.favorite{float:left;}
+.soft_collect{background: url(/img/toolbar.gif) 0 -1px no-repeat; cursor: pointer;padding-left:20px;}
+.soft_collected{background: url(/img/toolbar.gif) 1px -28px no-repeat;}
+.soft_collect_count{font-size:12pt;font-family: Arial;color:#8B0000;margin:0 10px 0 10px;}
+.soft_collect_count:hover {color:red;}
+.soft_used{float:right;margin:0 0 0 20px;padding:0;position: relative;}
+.soft_used_button{z-index: 1; position: relative; cursor: pointer;margin-left:10px;}
+.arrow_holder{background: url(/img/toolbar.gif) -1px -350px no-repeat;}
+a.soft_used_button_n{}
+a.soft_used_button_y{color:#40AA53;font-weight:bold;}
+.soft_used_level{ z-index: 99; position: absolute; top: 28px;left: 0; width: 80px; background-color: #f9f9f9; border: 1px solid #ccc;}
+.soft_used_level li{ line-height: 34px; padding-left: 30px;background: url(/img/toolbar.gif) 3px -390px no-repeat; cursor: pointer;}
+.soft_used_level li.choice{ background-color: #e9e9e9; background-position: 3px -418px}
+.soft_used_level li.level{ background-position: 3px -418px}
+.options .report{float:left;background: url(/img/toolbar.gif) 0 -113px no-repeat;padding:0 10px 0 15px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;border-right:1px solid #CCC;}
+.options .vote{float:right;width:120px;margin:0 0 0 20px;padding:0 5px;border:1px solid #CCC;text-align:center;vertical-align:middle;}
+.options .vote-up-on{float:left;background: url(/img/toolbar.gif) 0 -160px no-repeat;padding-left:15px;}
+.options .vote-up-off{float:left;background: url(/img/toolbar.gif) 0 -137px no-repeat;padding-left:15px;}
+.options .vote-down-on{float:right;background: url(/img/toolbar.gif) 0 -209px no-repeat;padding-left:15px;}
+.options .vote-down-off{float:right;background: url(/img/toolbar.gif) 0 -184px no-repeat;padding-left:15px;}
+.options .vote-count-post{font-size:12pt;font-family: Arial;color: #8B0000;text-align: center;vertical-align:middle;margin:0 5px;}
+.options .news_deliver{float:left;background: url(/img/toolbar.gif) 3px -243px no-repeat;padding:0 10px 0 24px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;border-right:1px solid #CCC;}
+#p_used_count{cursor:pointer;}
+</style>
+<script type='text/javascript'>
+function set_prj_exp(prj_id,level) {
+	if(level>0) {
+    	$('#soft_used_button').removeClass('soft_used_button_n')
+    		.addClass('soft_used_button_y')
+    		.attr('title','取消使用经验');
+	} else {
+		$('#soft_used_button').removeClass('soft_used_button_y')
+    		.addClass('soft_used_button_n')
+    		.attr('title','设置使用经验');
+	}
+	jQuery.get('/action/project/toggle_used?id=33826&level='+level,function(data){
+		$('#p_used_count').html('+'+data);
+	});
+	$('li[level='+level+']').addClass('level');
+}
+
+$(document).ready(function(){
+	$.ajax({
+		url:"/action/favorite/attentionUsersCount",
+		type:"get",
+		data:"id="+33826+"&type="+1,
+		success:function(msg){
+			$("#p_favor_count").html("+"+msg);
+		}
+	});
+	
+	$('#favor_trigger').click(function(){
+			add_to_favor(33826,1);
+		});
+	$('#soft_used_button').click(function(){
+			if(confirm('必须登录后才能操作，是否现在登录？')){
+    		location.href="http://www.oschina.net/home/login?goto_page="+encodeURIComponent(location.href);
+    	}
+		});
+	$('#soft_used_level').hover(null,function(){
+		$(this).hide();
+	});
+	$('#soft_used_level li').hover(function(){
+		$(this).toggleClass('choice');
+	}).click(function(){
+		var level = $(this).attr('level');
+		$('#soft_used_level li').removeClass('level');
+		set_prj_exp(33826,level);
+		$('#soft_used_level').hide();
+	});
+	
+	$('#p_used_count').click(function(){
+		jQuery.ajax({
+    		type	: 'GET',
+    		cache	: true,
+    		url		: "/widgets/used_users?id=33826",
+    		success	: function(data){
+				jQuery.fancybox(data);
+			},
+    		error	: function(html){
+    			alert("获取数据失败，代码:" +html.status+ "，请稍候再试");
+    		}
+		});
+	});
+});
+
+var favor_ok = "<p class='favor_ok'>已成功添加到收藏夹<br/><br/> <a href='null/favorites?type=1'>我的收藏夹</a> | <a href='javascript:close_favor()'>关闭</a></p>";
+function delete_favor(obi_id, obj_type){
+	if(!confirm('确定取消收藏？')) return;
+	$.post("/action/favorite/cancel?type="+obj_type+"&id="+obi_id+"&user=${g_user.id}",function(html){
+    	$('#favor_trigger').removeClass('soft_collected');
+		$('#favor_trigger').attr('title','添加到收藏');
+    	$('#p_favor_count').html('+'+html);
+		$('#favor_trigger').unbind('click');
+		$('#favor_trigger').click(function(){add_to_favor(33826,1);});
+	});
+}
+function add_to_favor(obj_id, obj_type){
+	if(confirm('必须登录后才能收藏，是否现在登录？')){
+		location.href="http://www.oschina.net/home/login?goto_page="+encodeURIComponent(location.href);
+	}
+}
+function close_favor(elem_id){
+    $('#favor_trigger').poshytip('destroy');
+}
+function setTag(tv){
+	var t = $("._favor_input");
+	var value = t.val();
+	var tags = value.replace(/，/ig,',').split(',');
+	var exist = false;
+	value = $.map(tags,function(v,i){
+		if($.trim(tv) == $.trim(v)){
+			exist = true;
+			return undefined;
+		}
+		return v;
+	}).join(',');
+	if(exist){
+		t.val(value);
+		return;
+	}
+	if(value!="")
+		t.val(value+","+tv);
+	else
+		t.val(tv)
+}
+</script>
+<div id='toolbar_wrapper'>
+	<div class='toolbar'>
+	<div class="tool_title"><b>分享到：&nbsp;</b></div>
+	<div class='share'>
+		<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","tqq","qzone","weixin","sqq"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+	</div>
+	<div class='options'>
+				<div class='soft_used'>
+			<a title="取消使用经验" class="soft_used_button soft_used_button_n" id="soft_used_button" href='javascript:;'>已用<span class='arrow_holder'>&nbsp;&nbsp;&nbsp;</span></a>
+			<span class="soft_collect_count" id="p_used_count">+1</span>
+			<ul class="soft_used_level" id="soft_used_level" style="display:none">
+				<li level="1" class="">用过</li>
+				<li level="2" class="">熟练</li>
+				<li level="3" class="">精通</li>
+				<li level="0" class="level">取消</li>
+			</ul>
+		</div>
+				<div class='favorite'>
+		<a title="收藏此软件" id="favor_trigger" class="soft_collect " href="javascript:;">收藏</a>		<span class="soft_collect_count" id="p_favor_count">+0</span>
+		</div>
+					</div>
+	</div>
+</div>	<div id='Body' class='Body'>
+		    	<div class='detail TextContent' id='p_fullcontent'>
+			<p style='margin:0 0 10px 0;'><a style="color:#A00;font-weight:bold;" href="http://www.oschina.net/news/61534/oschina-opensource-collection-plan-for-it-companies" target="_blank">开源中国的 IT 公司开源软件整理计划介绍</a></p>
+			<p>
+	&nbsp;
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<a href="https://raw.githubusercontent.com/hu17889/doc/master/go_spider/img/logo.png" target="_blank"><img alt="image" src="https://raw.githubusercontent.com/hu17889/doc/master/go_spider/img/logo.png" /></a> 
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	本项目基于golang开发，是一个开放的垂直领域的爬虫框架，框架中将各个功能模块区分开，方便使用者重新实现子模块，进而构建自己垂直方方向的爬虫。
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	本项目将爬虫的各个功能流程区分成Spider模块（主控），Downloader模块（下载器），PageProcesser模块（页面分析），Scheduler模块（任务队列），Pipeline模块（结果输出）；
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<strong>执行过程简述</strong>：
+</p>
+<ol style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<li>
+		Spider模块从Scheduler模块中获取包含待抓取url的Request对象，启动一个协程，一个协程执行一次爬取过程，此处我们把协程也看成Spider，Spider把Request对象传入Downloader，Downloader下载该Request对象中url所对应的页面或者其他类型的数据，生成Page对象；
+	</li>
+	<li>
+		Spider调用PageProcesser模块解析Page对象中的页面数据，并存入Page对象中的PageItems中（以Key-Value对的形式保存），同时存入解析结果中的待抓取链接，Spider会将待抓取链接存入Scheduler模块中的Request队列中；
+	</li>
+	<li>
+		Spider调用Pipeline模块输出Page中的PageItems的结果;
+	</li>
+	<li>
+		执行步骤1，直至Scheduler中所有链接被处理完成，则Spider被挂起等待下一个待抓取链接或者终止。
+	</li>
+</ol>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<img alt="image" src="https://github.com/hu17889/doc/raw/master/go_spider/img/project.png" /> 
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	执行过程相应的Spider核心代码，代码代表一次爬取过程：
+</p>
+<div style="background-color:#ffffff;color:#333333;" class="highlight highlight-Go">
+<pre><span style="color:#969896;">// core processer</span> <span style="color:#a71d5d;">func</span> <span style="color:#795da3;">(<span style="color:#df5000;">this</span> *<span style="color:#df5000;">Spider</span>) <span style="color:#795da3;">pageProcess</span></span>(<span style="color:#df5000;">req</span> *<span style="color:#df5000;">request</span>.<span style="color:#df5000;">Request</span>) { <span style="color:#969896;">// Get Page</span> <span style="color:#333333;">p</span> <span style="color:#a71d5d;">:=</span> this.<span style="color:#333333;">pDownloader</span>.<span style="color:#0086b3;">Download</span>(req) <span style="color:#a71d5d;">if</span> p == <span style="color:#0086b3;">nil</span> { <span style="color:#a71d5d;">return</span> } <span style="color:#969896;">// Parse Page</span> this.<span style="color:#333333;">pPageProcesser</span>.<span style="color:#0086b3;">Process</span>(p) <span style="color:#a71d5d;">for</span> <span style="color:#333333;">_</span>, <span style="color:#333333;">req</span> <span style="color:#a71d5d;">:=</span> <span style="color:#a71d5d;">range</span> p.<span style="color:#0086b3;">GetTargetRequests</span>() {
+        this.<span style="color:#0086b3;">addRequest</span>(req)
+    } <span style="color:#969896;">// Output</span> <span style="color:#a71d5d;">if</span> !p.<span style="color:#0086b3;">GetSkip</span>() { <span style="color:#a71d5d;">for</span> <span style="color:#333333;">_</span>, <span style="color:#333333;">pip</span> <span style="color:#a71d5d;">:=</span> <span style="color:#a71d5d;">range</span> this.<span style="color:#333333;">pPiplelines</span> {
+            pip.<span style="color:#0086b3;">Process</span>(p.<span style="color:#0086b3;">GetPageItems</span>(), this)
+        }
+    }
+
+    this.<span style="color:#0086b3;">sleep</span>()
+}</pre>
+</div>
+<h2 style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<a href="https://github.com/hu17889/go_spider/wiki/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3#%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E4%B8%8E%E7%A4%BA%E4%BE%8B%E6%89%A7%E8%A1%8C"></a>项目安装与示例执行
+</h2>
+<ul style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<li>
+		安装本包和依赖包
+	</li>
+</ul>
+<pre>go get github.com/hu17889/go_spider
+go get github.com/PuerkitoBio/goquery
+go get github.com/bitly/go-simplejson</pre>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<strong>示例执行：</strong> 
+</p>
+<ul style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<li>
+		编译：go install github.com/hu17889/go_spider/example/github_repo_page_processor
+	</li>
+	<li>
+		执行：./bin/github_repo_page_processor
+	</li>
+</ul>
+<h2 style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<a href="https://github.com/hu17889/go_spider/wiki/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3#%E5%B1%95%E7%A4%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%88%AC%E8%99%AB%E7%A4%BA%E4%BE%8B"></a>展示一个简单爬虫示例
+</h2>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	示例的功能是爬取<a href="https://github.com/hu17889?tab=repositories">https://github.com/hu17889?tab=repositories</a>下面的项目以及项目详情页的相关信息，并将内容输出到标准输出。
+</p>
+<p style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	一般在自己的爬虫main包中需要实现爬虫创建，初始化，以及PageProcesser模块的继承实现。可以实现自己的子模块或者使用项目中已经存在的子模块，通过Spider对象中相应的Set或者Add函数将模块引入爬虫。本项目支持<strong>链式调用</strong>。
+</p>
+<div style="background-color:#ffffff;color:#333333;" class="highlight highlight-Go">
+<pre>spider.<span style="color:#0086b3;">NewSpider</span>(<span style="color:#0086b3;">NewMyPageProcesser</span>(), <span style="color:#df5000;"><span style="color:#df5000;">"</span>TaskName<span style="color:#df5000;">"</span></span>). <span style="color:#969896;">// 创建PageProcesser和Spider，设置任务名称</span> <span style="color:#0086b3;">AddUrl</span>(<span style="color:#df5000;"><span style="color:#df5000;">"</span>https://github.com/hu17889?tab=repositories<span style="color:#df5000;">"</span></span>, <span style="color:#df5000;"><span style="color:#df5000;">"</span>html<span style="color:#df5000;">"</span></span>). <span style="color:#969896;">// 加入初始爬取链接，需要设置爬取结果类型，方便找到相应的解析器</span> <span style="color:#0086b3;">AddPipeline</span>(pipeline.<span style="color:#0086b3;">NewPipelineConsole</span>()). <span style="color:#969896;">// 引入PipelineConsole输入结果到标准输出</span> <span style="color:#0086b3;">SetThreadnum</span>(<span style="color:#0086b3;">3</span>). <span style="color:#969896;">// 设置爬取参数：并发个数</span> <span style="color:#0086b3;">Run</span>() <span style="color:#969896;">// 开始执行</span></pre>
+</div>
+<ul style="background-color:#ffffff;text-indent:0px;color:#333333;">
+	<li>
+		<p>
+			更对示例可参看<a href="https://github.com/hu17889/go_spider/tree/master/example">examples</a>。
+		</p>
+	</li>
+	<li>
+		<p>
+			具体模块的说明见<a href="https://github.com/hu17889/go_spider/wiki/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3#%E6%A8%A1%E5%9D%97">模块说明</a> 
+		</p>
+	</li>
+</ul>
+		</div>
+						<div class='GithubEmbed'>
+		    			    	<script type="text/javascript" src="/js/jquery/jquery.githubRepoWidget.js?t=1399607771000"></script>
+		    	<div class="github-widget" data-repo="hu17889/go_spider" style="margin:10px 0;"></div>
+		        <script type="text/javascript">
+			var genGitIdent = function(ident){
+				var id = [];
+				$.each(ident.split('/'),function(i,v){
+					if(i<=2)
+						id.push(v.replace('.git','').replace(':','/'));
+				});
+				return id.join('/')+"/preview";
+			};
+			var url = ["https://github.com/hu17889/go_spider","https://github.com/hu17889/go_spider/wiki/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3","https://github.com/hu17889/go_spider","${p.src}"];
+			var found = false;
+			for(var i in url){
+ 				var ident = url[+i].split('git.oschina.net');
+       			if(ident.length==2 && !found){
+        			var prv = genGitIdent(ident[1]);
+					if(prv && prv.length>0){
+						document.getElementsByClassName("GithubEmbed")[0].innerHTML = "";
+						document.write('<script src="http://git.oschina.net'+prv+'" type="text\/javascript"><\/script>');
+						found = true;
+					}
+    			}else{
+					continue;
+				}
+			}
+		</script>
+		</div>
+								<div class='google_ads'>
+			<script type="text/javascript" src="/js/ad/project.js?t=1399607778000"></script>
+        </div>
+		        <ul class='attrs'>
+        <li>授权协议： <a href='http://www.oschina.net/question/12_2830' target='_blank'>MPL</a></li>
+                          <li class='lang'>开发语言： <a href="/project/lang/358/go">Google Go</a> 					  </li>
+                  <li>操作系统：
+		  					  					  			<a>跨平台</a>&nbsp;		  </li>
+		          <li>收录时间： <a href="http://my.oschina.net/u/194767" target="_blank">hucong</a> -&gt; <a>2014年12月01日</a>&nbsp;&nbsp;（国产软件 or 国人参与）		  </li>
+        </ul>
+
+		<ul class='urls'>
+            <li><a href="/action/project/go?id=33826&p=home" title="go_spider 网站" target="_blank">软件首页</a></li>            <li><a href="/action/project/go?id=33826&p=doc" title="go_spider 文档" target="_blank">软件文档</a></li>                            <li><a href="/action/project/go?id=33826&p=download" title="下载 go_spider" target="_blank">软件下载</a></li>
+            									<li><a href="/action/visit/ad?id=1058&args=Google Go" title="go_spider 相关在线课程由麦子学院提供" target="_blank" style="background:#40AA53;">在线课程<span style='color:#eee;font-size:7pt;margin-left:5px;'>AD</span></a></li>
+		</ul>
+				
+	</div>
+	</div>
+		
+<div class='panel ProjectPosts'>
+<div class='tabs' style="height:auto;">
+    <ul>
+    	<li><a href="#" onclick='return false;' class='active'>go_spider问答</a></li>
+    	<li><a href="/code/tag/go_spider">go_spider代码</a></li>
+    	<li><a href="http://www.oschina.net/search?scope=blog&q=go_spider">go_spider博客</a></li>	
+    </ul>
+    <div class="clear"></div>
+</div>
+
+<div class='ProjectThreads'>
+<table>
+	</table>
+<a href="http://www.oschina.net/question/tag/go_spider" class='more'>更多go_spider的问题 &raquo;</a>
+</div>
+</div>	</div>
+<div class='ProjectRight'>
+			<div id='QuestionWizard'>
+		<table>
+		<tr>
+			<td width='56' align='left'><a href="http://my.oschina.net/u/194767" target="_blank"><img src="http://static.oschina.net/uploads/user/97/194767_100.jpg?t=1417364384000" align="absmiddle" alt="hucong" title="hucong" class="LargePortrait"/></a></td>
+			<td><em style="vertical-align: middle; font-size: 12pt; font-weight: normal; color: #666; ">作者：</em><a href="http://my.oschina.net/u/194767" target="_blank" style="width: 125px; overflow: hidden; display: inline-block; white-space: nowrap; text-overflow: ellipsis; text-align: left; vertical-align: middle;">@hucong</a>
+				<div class='FollowIt'>
+										<script type='text/javascript'>
+var nologin = "<a href='javascript:_follow_nologin()' title='成为TA的粉丝'>关注此人</a>"
+var follow0 = "<a href='javascript:_follow_user(194767,true)' title='成为TA的粉丝'>关注此人</a>";
+var follow1 = "已关注 | <a href='javascript:_follow_user(194767,false)' title='取消关注后，此人的更新信息将不会出现在你的首页'>取消</a>";
+var follow2 = "互相关注 | <a href='javascript:_follow_user(194767,false)' title='取消关注后，此人的更新信息将不会出现在你的首页'>取消</a>";
+var follow4 = "<a href='javascript:_follow_user(194767,true)' title='成为TA的粉丝'>+关注此人</a>";
+
+document.write("<span id='_follow_194767_action_'>");
+	document.write(nologin);
+document.write("</span>");
+
+function _follow_nologin(){
+	if(confirm('必须登录后才能关注，是否现在登录？')){
+		location.href="http://www.oschina.net/home/login?goto_page="+location.href;
+	}
+}
+
+function _follow_user(uid, follow){
+	var action = follow?"/action/user/follow":"/action/user/unfollow";
+	ajax_post(action,"id="+uid+"&user=${g_user.id}",function(result){
+		var act = $('#_follow_194767_action_');
+		if(result == '0')
+			_follow_nologin();
+		else if(result == '1')
+			act.html(follow0);
+		else if(result == '2')
+			act.html(follow1);
+		else if(result == '3')
+			act.html(follow2);
+		else if(result == '4')
+			act.html(follow4);
+	});
+}
+</script>				</div>
+			</td>
+		</tr>
+		</table>
+		<a href='javascript:sendmsg(194767)' class='rndbutton'><span>发送私信</span></a>
+		<a href='/question/ask?project=go_spider&user=194767' class='rndbutton'><span>我要提问/分享</span></a>		
+	</div>
+												<div id="DynaInfo">
+    	<form id="TForm" action="/action/tweet/pub?project=33826" onkeydown="if((event.metaKey || event.ctrlKey)&&event.keyCode==13){submitMe();}" method="POST">
+			<input type='hidden' name='user' value='${g_user.id}'/>
+			<input type='hidden' name='user_code' value=''/>
+    		<div id='DivPubStatus'>已发布:)</div>
+    		<textarea name='msg' placeholder='关于这款软件你有什么要说的吗？'></textarea>
+			<input type='submit' value='动 弹'/>    		
+    	</form>
+	
+        <div class="TopTweets_content">
+			<ul class="TopTweets">
+</ul>
+    		</div>
+		<script type='text/javascript'>
+		<!--	
+        $('#TForm').ajaxForm({
+    		dataType: 'json',
+            success: function(json) {
+				handleLogRes(json);
+            }
+        });
+		$('#DynaInfo .pager a').live('click',function(){
+			jQuery.ajax({
+        		type	: "GET",
+        		url		: $(this).attr('href'),
+        		success : function(data){
+					$('.TopTweets_content').html(data);
+				}
+        	});	
+			$('#DynaInfo .pager li').removeClass('current');
+			$(this).parent().addClass('current');
+			return false;
+		});
+		$('#c').bind('mouseover mouseout',function(){
+			$('#c_on').toggle();
+			$('#c_off').toggle();
+		});
+		function submitMe(){
+			var queryString = $('#TForm').formSerialize();
+			ajax_post("/action/tweet/pub?project=33826",queryString,function(res){
+				var json = eval('(' + res + ')'); 
+				handleLogRes(json);
+			});
+		}
+		function handleLogRes(json){
+        	if(json.msg){
+				alert(json.msg);
+        	}else if(json.log){
+				$('#TForm textarea').val(' ');
+				$('#DivPubStatus').show();
+				t = setTimeout(function(){
+					$('#DivPubStatus').hide();
+					clearTimeout(t);
+					$('#TForm textarea').val('');
+					$('#TForm textarea').focus();								
+                	jQuery.ajax({
+                		type	: "GET",
+                		url		: "/p/get_p_tweet?id="+json.log,
+                		success : function(data){
+    						$('.TopTweets').prepend(data);
+    					}
+                	});	
+				},1000);
+        	}
+		}
+		//-->
+		</script>
+	</div>
+		
+	
+	<div class='RightBlock RightProjectList'>
+		<div class="RightTitle">
+				<span class='right'><a href="/p/go_spider/similar_projects#list" class='more'>显示所有&nbsp;&raquo;</a></span>
+						共有 <em>95</em> 个类似软件</div>
+						<ul>
+						<li>
+				<a href="/p/nutch"><span style='color:#A00;'>[荐]</span>搜索引擎 <span class='name'>Nutch</span></a>
+				<p>Nutch 是一个开源Java 实现的搜索引擎。它提供了我们运行自己的搜索引擎所需的全...</p>
+			</li>
+						<li>
+				<a href="/p/webcollector"><span style='color:#A00;'>[荐]</span>JAVA爬虫 <span class='name'>WebCollector</span></a>
+				<p>爬虫简介： WebCollector是一个无须配置、便于二次开发的JAVA爬虫框架（内核），它...</p>
+			</li>
+						<li>
+				<a href="/p/pyspider"><span style='color:#A00;'>[荐]</span>Python 爬虫程序 <span class='name'>PySpider</span></a>
+				<p>PySipder 是一个 Python 爬虫程序 演示地址：http://demo.pyspider.org/ 使用 Pyth...</p>
+			</li>
+						<li>
+				<a href="/p/soukey">网站数据采集软件 <span class='name'>网络矿工采集器（原soukey采摘）</span></a>
+				<p>Soukey采摘网站数据采集软件是一款基于.Net平台的开源软件，也是网站数据采集软件类...</p>
+			</li>
+						<li>
+				<a href="/p/grub+next+generation">网站爬虫 <span class='name'>Grub Next Generation</span></a>
+				<p>Grub Next Generation 是一个分布式的网页爬虫系统，包含客户端和服务器可以用来维...</p>
+			</li>
+						<li>
+				<a href="/p/phpdig">PHP的Web爬虫和搜索引擎 <span class='name'>PhpDig</span></a>
+				<p>PhpDig是一个采用PHP开发的Web爬虫和搜索引擎。通过对动态和静态页面进行索引建立一...</p>
+			</li>
+						<li>
+				<a href="/p/snoopy">网站内容采集器 <span class='name'>Snoopy</span></a>
+				<p>Snoopy是一个强大的网站内容采集器（爬虫）。提供获取网页内容，提交表单等功能。...</p>
+			</li>
+						<li>
+				<a href="/p/jspider">Java网页爬虫 <span class='name'>JSpider</span></a>
+				<p>JSpider是一个用Java实现的WebSpider，JSpider的执行格式如下： jspider [URL] [C...</p>
+			</li>
+						<li>
+				<a href="/p/nwebcrawler">网络爬虫程序 <span class='name'>NWebCrawler</span></a>
+				<p>NWebCrawler是一款开源的C#网络爬虫程序</p>
+			</li>
+						<li>
+				<a href="/p/webmagic">垂直爬虫 <span class='name'>WebMagic</span></a>
+				<p>webmagic的是一个无须配置、便于二次开发的爬虫框架，它提供简单灵活的API，只需少...</p>
+			</li>
+					</ul>
+			</div>
+        	
+		<div class="p_ad" style="margin-bottom: 40px;">
+		<script type="text/javascript"><!--
+        google_ad_client = "ca-pub-7090564139599510";
+        /* oschina-project-250x250 */
+        google_ad_slot = "9681670919";
+        google_ad_width = 250;
+        google_ad_height = 250;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+
+	</div>
+		
+	<div class="RightBlock TopUsers">
+		<div class="RightTitle">共有 <em id="attentent_count">12</em> 人关注 <em>go_spider</em></div>
+		<ul>
+                        <li>
+        	<a href="http://my.oschina.net/lxpan" title="烈冰" target="_blank"><img src="http://static.oschina.net/uploads/user/46/92866_50.jpg?t=1419324852000" align="absmiddle" alt="烈冰" title="烈冰" class="SmallPortrait" user="92866"/></a>
+        	<a href="http://my.oschina.net/lxpan" class='name' title="烈冰" target="_blank">烈冰</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/xilo" title="xilo" target="_blank"><img src="http://static.oschina.net/uploads/user/54/109063_50.jpg" align="absmiddle" alt="xilo" title="xilo" class="SmallPortrait" user="109063"/></a>
+        	<a href="http://my.oschina.net/xilo" class='name' title="xilo" target="_blank">xilo</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/liwangmj" title="Wim" target="_blank"><img src="http://static.oschina.net/uploads/user/60/120421_50.jpg?t=1391832888000" align="absmiddle" alt="Wim" title="Wim" class="SmallPortrait" user="120421"/></a>
+        	<a href="http://my.oschina.net/liwangmj" class='name' title="Wim" target="_blank">Wim</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/130279" title="loveq369" target="_blank"><img src="/img/portrait.gif?t=1399607780000" align="absmiddle" alt="loveq369" title="loveq369" class="SmallPortrait" user="130279"/></a>
+        	<a href="http://my.oschina.net/u/130279" class='name' title="loveq369" target="_blank">loveq369</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/173303" title="天祁" target="_blank"><img src="http://static.oschina.net/uploads/user/86/173303_50.jpg?t=1384934874000" align="absmiddle" alt="天祁" title="天祁" class="SmallPortrait" user="173303"/></a>
+        	<a href="http://my.oschina.net/u/173303" class='name' title="天祁" target="_blank">天祁</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/194767" title="hucong" target="_blank"><img src="http://static.oschina.net/uploads/user/97/194767_50.jpg?t=1417364384000" align="absmiddle" alt="hucong" title="hucong" class="SmallPortrait" user="194767"/></a>
+        	<a href="http://my.oschina.net/u/194767" class='name' title="hucong" target="_blank">hucong</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/563690" title="lazeyliu" target="_blank"><img src="http://static.oschina.net/uploads/user/281/563690_50.jpg?t=1369877381000" align="absmiddle" alt="lazeyliu" title="lazeyliu" class="SmallPortrait" user="563690"/></a>
+        	<a href="http://my.oschina.net/u/563690" class='name' title="lazeyliu" target="_blank">lazeyliu</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/xlstudio" title="清溪鬼谷" target="_blank"><img src="http://static.oschina.net/uploads/user/292/585981_50.jpg?t=1369467849000" align="absmiddle" alt="清溪鬼谷" title="清溪鬼谷" class="SmallPortrait" user="585981"/></a>
+        	<a href="http://my.oschina.net/xlstudio" class='name' title="清溪鬼谷" target="_blank">清溪鬼谷</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/856586" title="sdfsda" target="_blank"><img src="/img/portrait.gif?t=1399607780000" align="absmiddle" alt="sdfsda" title="sdfsda" class="SmallPortrait" user="856586"/></a>
+        	<a href="http://my.oschina.net/u/856586" class='name' title="sdfsda" target="_blank">sdfsda</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/918969" title="cysg" target="_blank"><img src="/img/portrait.gif?t=1399607780000" align="absmiddle" alt="cysg" title="cysg" class="SmallPortrait" user="918969"/></a>
+        	<a href="http://my.oschina.net/u/918969" class='name' title="cysg" target="_blank">cysg</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/devopscode" title="devopscode" target="_blank"><img src="/img/portrait.gif?t=1399607780000" align="absmiddle" alt="devopscode" title="devopscode" class="SmallPortrait" user="1475768"/></a>
+        	<a href="http://my.oschina.net/devopscode" class='name' title="devopscode" target="_blank">devopscode</a>
+        </li>
+                                <li>
+        	<a href="http://my.oschina.net/u/1762602" title="chenhaoxian" target="_blank"><img src="/img/portrait.gif?t=1399607780000" align="absmiddle" alt="chenhaoxian" title="chenhaoxian" class="SmallPortrait" user="1762602"/></a>
+        	<a href="http://my.oschina.net/u/1762602" class='name' title="chenhaoxian" target="_blank">chenhaoxian</a>
+        </li>
+                		</ul>
+	</div>
+	
+	
+</div>
+</div>
+
+<script type="text/javascript" src="/js/sh309/scripts/xregexp-min.js?t=1423294217000"></script>
+<script type="text/javascript" src="/js/sh309/scripts/shCore.min.js?t=1423294217000"></script>
+<script type="text/javascript" src="/js/sh309/scripts/shAutoloader.js?t=1423294217000"></script>
+<link type="text/css" rel="stylesheet" href="/js/sh309/styles/shCore.css?t=1423294217000"/>
+<link type="text/css" rel="Stylesheet" href="/js/sh309/styles/shThemeDefault.css?t=1423294217000"/>
+
+<script type="text/javascript">
+    SyntaxHighlighter.autoloader(
+            'applescript			/js/sh309/scripts/shBrushAppleScript.js?t=1423294217000',
+            'actionscript3 as3		/js/sh309/scripts/shBrushAS3.js?t=1423294217000',
+            'bash shell				/js/sh309/scripts/shBrushBash.js?t=1423294217000',
+            'coldfusion cf			/js/sh309/scripts/shBrushColdFusion.js?t=1423294217000',
+            'cpp c					/js/sh309/scripts/shBrushCpp.js?t=1423294217000',
+            'obj-c objc				/js/sh309/scripts/shBrushObjC.js?t=1423294217000',
+            'c# c-sharp csharp		/js/sh309/scripts/shBrushCSharp.js?t=1423294217000',
+            'css					/js/sh309/scripts/shBrushCss.js?t=1423294217000',
+            'delphi pascal			/js/sh309/scripts/shBrushDelphi.js?t=1423294217000',
+            'diff patch pas			/js/sh309/scripts/shBrushDiff.js?t=1423294217000',
+            'erl erlang				/js/sh309/scripts/shBrushErlang.js?t=1423294217000',
+            'groovy					/js/sh309/scripts/shBrushGroovy.js?t=1423294217000',
+            'haxe hx				/js/sh309/scripts/shBrushHaxe.js?t=1423294217000',
+            'java					/js/sh309/scripts/shBrushJava.js?t=1423294217000',
+            'jfx javafx				/js/sh309/scripts/shBrushJavaFX.js?t=1423294217000',
+            'js jscript javascript	/js/sh309/scripts/shBrushJScript.js?t=1423294217000',
+            'perl pl				/js/sh309/scripts/shBrushPerl.js?t=1423294217000',
+            'php					/js/sh309/scripts/shBrushPhp.js?t=1423294217000',
+            'text plain				/js/sh309/scripts/shBrushPlain.js?t=1423294217000',
+            'py python				/js/sh309/scripts/shBrushPython.js?t=1423294217000',
+            'ruby rails ror rb		/js/sh309/scripts/shBrushRuby.js?t=1423294217000',
+            'scala					/js/sh309/scripts/shBrushScala.js?t=1423294217000',
+            'sql					/js/sh309/scripts/shBrushSql.js?t=1423294217000',
+            'vb vbnet				/js/sh309/scripts/shBrushVb.js?t=1423294217000',
+            'xml xhtml xslt html	/js/sh309/scripts/shBrushXml.js?t=1423294217000'
+    );
+    SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="/action/visit/project?id=33826" defer="defer"></script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="/js/minmax.js?t=1399607773000"></script>
+<![endif]-->
+<div class='clear'></div></div>
+	<div id="OSC_Footer" class='CenterDiv'><style>
+.oscapp {text-align:left; width:220px;}
+.oscapp span {float:left;width:140px;}
+.oscapp a {float:left;text-indent:-9999em;width:16px;margin-left:8px;}
+.oscapp a.android {background:url('/img/android.gif') no-repeat left center;}
+.oscapp a.iphone {background:url('/img/iphone.gif') no-repeat left center;}
+.oscapp a.wp7 {background:url('/img/wp7.gif') no-repeat left center;}
+</style>
+<table width='100%'><tr>
+<td align='left'>&copy; 开源中国(OSChina.NET) | <a href="http://www.oschina.net/home/aboutosc">关于我们</a> | <a href="mailto:market@oschina.net">广告联系</a> | <a href="http://weibo.com/oschina2010" target="_blank">@新浪微博</a> | <a href="http://m.oschina.net/">开源中国手机版</a> | <a href='http://www.miitbeian.gov.cn/' target='_blank' style='color:#737573;text-decoration:none;'>粤ICP备12009483号-3</a></td>
+<td class='oscapp'>
+	<span>开源中国手机客户端：</span>
+	<a href="http://www.oschina.net/app" class='android' title='Android客户端'>Android</a>
+	<a href="http://www.oschina.net/app" class='iphone' title='iPhone 客户端'>iPhone</a>
+	<a href="http://www.oschina.net/app" class='wp7' title='Windows Phone 客户端'>WP7</a>
+</td>
+</tr>
+<tr>
+<td colspan='2' align='left'>开源中国社区(OSChina.net)是工信部 <a href='http://www.copu.org.cn/' target='_blank'>开源软件推进联盟</a> 指定的官方社区</td>
+</tr>
+</table>
+<script type='text/javascript'>
+<!--
+if (top.location != self.location)top.location=self.location;
+//-->
+</script></div>
+</div>
+</body>
+</html>
+<!-- Generated by OsChina.NET (init:0[ms],page:45[ms],ip:111.0.247.119) -->
