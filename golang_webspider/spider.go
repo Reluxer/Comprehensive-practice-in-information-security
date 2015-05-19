@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"regexp"
+	"strconv"
 )
 
 func main() {
@@ -30,7 +31,7 @@ func GetHash(c string) (h string) {
 
 func GetPageToFile(url string, dep int) (ok bool) {
 	fileStorePath := `./`
-	logdb := `./visitedurl`
+	logdb := `./log`
 	if dep < 0 {
 		ok = true
 		return
@@ -81,7 +82,7 @@ func str2file(c, fp, logfile, url string, d int) (ok bool) {
 		return ok
 	}
 	defer flog.Close()
-	_, err = io.WriteString(flog, "depth "+string(d)+url+"\t"+filename+"\n")
+	_, err = io.WriteString(flog, "depth "+strconv.Itoa(d)+"\t"+url+"\t"+filename+"\n")
 
 	if err != nil {
 		fmt.Println("Error:", err)
